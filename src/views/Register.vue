@@ -14,6 +14,7 @@
                 type="text"
                 class="form-control form-control-lg"
                 placeholder="Username"
+                v-model="username"
               />
             </fieldset>
 
@@ -22,6 +23,7 @@
                 type="text"
                 class="form-control form-control-lg"
                 placeholder="Email"
+                v-model="email"
               />
             </fieldset>
 
@@ -30,6 +32,7 @@
                 type="password"
                 class="form-control form-control-lg"
                 placeholder="Password"
+                v-model="password"
               />
             </fieldset>
 
@@ -46,6 +49,13 @@
 <script>
 export default {
   name: 'McpRegister',
+  data () {
+    return {
+      email: '',
+      password: '',
+      username: ''
+    }
+  },
   computed: {
     isSubmitting() {
       return this.$store.state.auth.isSubmitting
@@ -56,12 +66,13 @@ export default {
       console.log('submitted form')
       this.$store
         .dispatch('register', {
-          email: 'alexander.pankov22@mail.ru',
-          username: 'alexander-pankov-22',
-          password: '1q2w3e888'
+          email: this.email,
+          username: this.username,
+          password: this.password
         })
         .then(user => {
           console.log('successfully register user', user)
+          this.$router.push({name: 'home'})
         })
     }
   }
