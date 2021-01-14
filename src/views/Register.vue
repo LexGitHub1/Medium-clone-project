@@ -7,7 +7,10 @@
           <p class="text-xs-center">
             <router-link :to="{name: 'login'}">Need an account?</router-link>
           </p>
-          VALIDATION ERRORS
+          <mcp-validation-errors
+            v-if="validationErrors"
+            :validation-errors="validationErrors"
+          />
           <form @submit.prevent="onSubmit">
             <fieldset class="form-group">
               <input
@@ -47,9 +50,13 @@
 </template>
 
 <script>
+import McpValidationErrors from '@/components/ValidationErrors'
 export default {
   name: 'McpRegister',
-  data () {
+  components: {
+    McpValidationErrors
+  },
+  data() {
     return {
       email: '',
       password: '',
@@ -59,6 +66,9 @@ export default {
   computed: {
     isSubmitting() {
       return this.$store.state.auth.isSubmitting
+    },
+    validationErrors() {
+      return this.$store.state.auth.validationErrors
     }
   },
   methods: {
@@ -76,5 +86,5 @@ export default {
         })
     }
   }
-};
+}
 </script>
