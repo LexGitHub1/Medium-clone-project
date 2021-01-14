@@ -33,7 +33,7 @@
               />
             </fieldset>
 
-            <button class="btn btn-lg btn-primary pull-xs-right">
+            <button class="btn btn-lg btn-primary pull-xs-right" :disabled="isSubmitting">
               Sign Up
             </button>
           </form>
@@ -47,13 +47,22 @@
 export default {
   name: 'McpRegister',
   computed: {
-    count() {
-      return this.$store.state.count
+    isSubmitting() {
+      return this.$store.state.auth.isSubmitting
     }
   },
   methods: {
     onSubmit() {
       console.log('submitted form')
+      this.$store
+        .dispatch('register', {
+          email: 'alexander.pankov22@mail.ru',
+          username: 'alexander-pankov-22',
+          password: '1q2w3e888'
+        })
+        .then(user => {
+          console.log('successfully register user', user)
+        })
     }
   }
 };
