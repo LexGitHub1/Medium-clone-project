@@ -1,14 +1,14 @@
 <template>
   <ul class="error-messages">
     <li v-for="errorMessage in errorMessages" :key="errorMessage">
-      {{errorMessage}}
+      {{ errorMessage }}
     </li>
   </ul>
 </template>
 
 <script>
 export default {
-  name: 'McpValidationErrors',
+  name: 'McvValidationErrors',
   props: {
     validationErrors: {
       type: Object,
@@ -19,6 +19,7 @@ export default {
     errorMessages() {
       return Object.keys(this.validationErrors).map(name => {
         const messages = this.validationErrors[name].join(', ')
+
         return `${name} ${messages}`
       })
     }
