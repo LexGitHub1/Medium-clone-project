@@ -10,7 +10,6 @@ import Article from '@/views/Article.vue'
 import CreateArticle from '@/views/CreateArticle.vue'
 import EditArticle from '@/views/EditArticle.vue'
 import Settings from '@/views/Settings.vue'
-import Foo from '@/views/Foo.vue'
 
 Vue.use(VueRouter)
 
@@ -69,11 +68,6 @@ const routes = [
     path: '/profiles/:slug/favorites',
     name: 'userProfileFavorites',
     component: GlobalFeed
-  },
-  {
-    path: '/foo',
-    name: 'foo',
-    component: Foo
   }
 ]
 
