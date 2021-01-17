@@ -1,1 +1,1 @@
-# medium-clone-project
+# Проект "Medium clone"
